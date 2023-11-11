@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F8F8F8"
+    tools:context=".ui.login.SignupPage">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/gotham"
+                android:gravity="center"
+                android:shadowColor="#57000000"
+                android:text="u can update your
+                 events here"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:drawableLeftCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColorHint="#000000">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Event Name "
+                    android:inputType="text"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColorHint="#000000">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri"
+                    android:hint="description"
+                    android:inputType="textMultiLine"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                tools:context=".DateFormActivity">
+                <EditText
+                    android:id="@+id/editTextDay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Jour"
+
+
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+
+                <EditText
+                    android:id="@+id/editTextMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Mois"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/editTextYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/calibri"
+                    android:hint="Année"
+                    android:inputType="number"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/imageView"-->
+                <!--                    android:layout_width="48dp"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:src="@drawable/placeholder_image" />-->
+
+
+            </LinearLayout>
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageSpinner" />
+            <!--            <resources>-->
+            <!--                <string-array name="image_array">-->
+            <!--                    <item>@drawable/image1</item>-->
+            <!--                    <item>@drawable/image2</item>-->
+            <!--                    <item>@drawable/image3</item>-->
+            <!--                    &lt;!&ndash; Ajoutez d'autres images si nécessaire &ndash;&gt;-->
+            <!--                </string-array>-->
+            <!--            </resources>-->
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="44dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttonshape"
+                android:fontFamily="@font/gotham"
+                android:text="image "
+                android:onClick="onImageSelectionClick"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <Button
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="44dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttonshape"
+                android:fontFamily="@font/gotham"
+                android:text="confirm update "
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
