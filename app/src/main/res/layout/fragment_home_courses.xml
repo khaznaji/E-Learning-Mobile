@@ -28,6 +28,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/usernameTextView"
                     style="@style/viewParent.headerText"
                     android:text="@string/hello_message" />
 

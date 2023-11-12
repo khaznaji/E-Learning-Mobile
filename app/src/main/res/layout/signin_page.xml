@@ -26,6 +26,7 @@
 
         <TextView
             android:id="@+id/back"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -48,10 +49,11 @@
             android:textColorHint="#000000">
 
             <EditText
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:fontFamily="@font/calibri"
-                android:hint="Name"
+                android:hint="Email"
                 android:inputType="text"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -66,6 +68,7 @@
             android:textColorHint="#000000">
 
             <EditText
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:fontFamily="@font/calibri"
