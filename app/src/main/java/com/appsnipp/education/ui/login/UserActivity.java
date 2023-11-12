@@ -47,13 +47,19 @@ public class UserActivity extends AppCompatActivity {
         AsyncTask.execute(() -> {
             // Load the list of users from the database
             List<User> userList = appDatabase.userDAO().getAllUsers();
-
+            List<User> filteredList = new ArrayList<>();
+            for (User user : userList) {
+                if (!user.getEmail().equals("admin@gmail.com")) {
+                    filteredList.add(user);
+                }
+            }
             runOnUiThread(() -> {
-                // Update the adapter with the new list of users
-                userAdapter.setUserList(userList);
+                // Update the adapter with the filtered list of users
+                userAdapter.setUserList(filteredList);
                 // Call notifyDataSetChanged on the adapter
                 userAdapter.notifyDataSetChanged();
             });
         });
     }
+
 }
