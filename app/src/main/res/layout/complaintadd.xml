@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="#F8F8F8"
 
-    tools:context=".ui.login.SignupPage">
+    tools:context=".ui.Complaints.AddArticle">
 
     <FrameLayout
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                 android:fontFamily="@font/gotham"
                 android:gravity="center"
                 android:shadowColor="#57000000"
-                android:text="Add Event"
+                android:text="Article"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="28sp"
@@ -50,11 +50,11 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/nameevent"
+                    android:id="@+id/ComplaintTitleInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/calibri"
-                    android:hint="Event Name "
+                    android:hint="Title"
                     android:inputType="text"
                     android:textColor="#000000"
                     android:textSize="18sp" />
@@ -68,68 +68,30 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/descevent"
+                    android:id="@+id/ComplaintDescriptionInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="218dp"
                     android:fontFamily="@font/calibri"
                     android:hint="description"
                     android:inputType="textMultiLine"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColorHint="#000000">
-
-                <EditText
-                    android:id="@+id/aaa"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/calibri"
-                    android:hint="lieu"
-                    android:inputType="textMultiLine"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-
-
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageSpinner" />
             <!--            <resources>-->
-            <!--                <string-array name="image_array">-->
-            <!--                    <item>@drawable/image1</item>-->
-            <!--                    <item>@drawable/image2</item>-->
-            <!--                    <item>@drawable/image3</item>-->
-            <!--                    &lt;!&ndash; Ajoutez d'autres images si nécessaire &ndash;&gt;-->
-            <!--                </string-array>-->
-            <!--            </resources>-->
+<!--                <string-array name="image_array">-->
+<!--                    <item>@drawable/image1</item>-->
+<!--                    <item>@drawable/image2</item>-->
+<!--                    <item>@drawable/image3</item>-->
+<!--                    &lt;!&ndash; Ajoutez d'autres images si nécessaire &ndash;&gt;-->
+<!--                </string-array>-->
+<!--            </resources>-->
 
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="44dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/buttonshape"
-                android:fontFamily="@font/gotham"
-                android:text="Sélectionner une image"
-                android:textAllCaps="false"
-                android:textColor="#ffffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                />
-
-            <Button
-                android:id="@+id/addevent"
+                android:id="@+id/ComplaintAddBtn"
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -137,7 +99,7 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
-                android:text="Add event "
+                android:text="Add"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="18sp"

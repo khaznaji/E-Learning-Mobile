@@ -5,44 +5,89 @@
 package com.appsnipp.education.ui.Courses;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.appsnipp.education.Database.AppDataBase;
+import com.appsnipp.education.Entity.Courses;
+import com.appsnipp.education.Entity.Event;
+import com.appsnipp.education.Entity.complaint;
 import com.appsnipp.education.R;
-import com.appsnipp.education.ui.Events.AddEvent;
-import com.appsnipp.education.ui.Events.ListEvent;
-import com.appsnipp.education.ui.Events.UpdateEvent;
+import com.appsnipp.education.ui.Complaints.ListComplaints;
+import com.appsnipp.education.ui.Events.EventAdapter;
+import com.appsnipp.education.ui.Events.ListEventsFront;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListCourses extends AppCompatActivity {
+    private AppDataBase appDatabase;
+    private RecyclerView recyclerViewUsers;
+    private CourseAdapter userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listcourses);
+        setContentView(R.layout.activity_course_list);
 
-        // Obtenir une référence au bouton "modifier" par son ID
-        Button modifierButton = findViewById(com.appsnipp.education.R.id.modifier);
-        Button ajouterButton = findViewById(com.appsnipp.education.R.id.add);
+        appDatabase = AppDataBase.getInstance(this);
 
-        // Ajouter un écouteur de clic au bouton
-        modifierButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Rediriger vers "eventupdate.xml" en créant une nouvelle intention (Intent)
-                Intent intent = new Intent(ListCourses.this, UpdateCourses.class);
-                startActivity(intent);
-            }
-        });
-        ajouterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Rediriger vers "eventupdate.xml" en créant une nouvelle intention (Intent)
-                Intent intent = new Intent(ListCourses.this, AddCourses.class);
-                startActivity(intent);
-            }
+        recyclerViewUsers = findViewById(R.id.cc);
+        recyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
+
+        // Initialize the adapter with an empty list (you can load the data later)
+        userAdapter = new CourseAdapter(new ArrayList<>());
+        recyclerViewUsers.setAdapter(userAdapter);
+
+        // Load the list of users in the background
+        loadUserList();
+    }
+
+    private void loadUserList() {
+        AsyncTask.execute(() -> {
+            // Load the list of users from the database
+            List<Courses> userList = appDatabase.userDAOoo().ListCourses();
+
+            runOnUiThread(() -> {
+                // Check if the list is empty
+                if (userList.isEmpty()) {
+                    // Display a message indicating that the table is empty
+                    // You can customize this based on your UI requirements
+                    // For simplicity, you can use a Toast or set a TextView's text
+                    // In this example, I'm using a Toast
+                    Toast.makeText(ListCourses.this, "Table is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Update the adapter with the new list of users
+                    userAdapter.setUserList(userList);
+                    // Call notifyDataSetChanged on the adapter
+                    userAdapter.notifyDataSetChanged();
+                }
+            });
         });
     }
-}
+        public void deleteComplaint (Courses courses){
+            AsyncTask.execute(() -> {
+                // Delete the complaint from the database
+                appDatabase.userDAOoo().deleteTodo(courses);
+
+                // Reload the list of users after deletion
+                loadUserList();
+
+                runOnUiThread(() -> {
+                    // Show a toast message or perform any UI update after deletion
+                    Toast.makeText(ListCourses.this, "course deleted", Toast.LENGTH_SHORT).show();
+                    loadUserList();
+                });
+                loadUserList();
+
+            });
+        }
+
+    }
