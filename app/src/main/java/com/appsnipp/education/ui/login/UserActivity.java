@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -21,9 +22,12 @@ import java.util.List;
 
 public class UserActivity extends AppCompatActivity {
 
+
     private AppDataBase appDatabase;
     private RecyclerView recyclerViewUsers;
     private UserAdapter userAdapter;
+    private List<User> originalUserList; // To store the original user list for filtering
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +42,53 @@ public class UserActivity extends AppCompatActivity {
         userAdapter = new UserAdapter(new ArrayList<>(), (position, view) -> showDeleteConfirmationDialog(position));
         recyclerViewUsers.setAdapter(userAdapter);
 
+        searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterUserList(newText);
+                return true;
+            }
+        });
+
         loadUserList();
     }
 
     private void loadUserList() {
         AsyncTask.execute(() -> {
             List<User> userList = appDatabase.userDAO().getAllUsers();
+            originalUserList = new ArrayList<>(userList); // Save the original list for filtering
+
             List<User> filteredList = new ArrayList<>();
             for (User user : userList) {
                 if (!user.getEmail().equals("admin@gmail.com")) {
                     filteredList.add(user);
                 }
             }
+
             runOnUiThread(() -> {
                 userAdapter.setUserList(filteredList);
                 userAdapter.notifyDataSetChanged();
             });
         });
+    }
+
+    private void filterUserList(String query) {
+        List<User> filteredUsers = new ArrayList<>();
+
+        for (User user : originalUserList) {
+            if (user.getEmail().toLowerCase().contains(query.toLowerCase())) {
+                filteredUsers.add(user);
+            }
+        }
+
+        userAdapter.setUserList(filteredUsers);
+        userAdapter.notifyDataSetChanged();
     }
 
     private void showDeleteConfirmationDialog(int position) {

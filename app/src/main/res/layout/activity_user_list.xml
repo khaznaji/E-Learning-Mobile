@@ -8,6 +8,14 @@
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context=".ui.login.UserActivity">
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Users"/>
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
