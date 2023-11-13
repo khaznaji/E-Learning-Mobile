@@ -2,10 +2,13 @@ package com.appsnipp.education;
 
         import android.content.Context;
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.os.Bundle;
         import android.util.AttributeSet;
         import android.view.MenuItem;
         import android.view.View;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
         import androidx.annotation.NonNull;
         import androidx.annotation.Nullable;
@@ -18,11 +21,15 @@ package com.appsnipp.education;
         import androidx.navigation.fragment.NavHostFragment;
         import androidx.navigation.ui.NavigationUI;
 
+        import com.appsnipp.education.DataBase.AppDataBase;
+        import com.appsnipp.education.Entity.User;
         import com.appsnipp.education.databinding.ActivityMainBinding;
         import com.appsnipp.education.ui.Events.ListEventsFront;
         import com.appsnipp.education.ui.Forum.Forum;
         import com.appsnipp.education.ui.helpers.BottomNavigationBehavior;
         import com.appsnipp.education.ui.helpers.DarkModePrefManager;
+        import com.appsnipp.education.ui.login.SigninPage;
+        import com.appsnipp.education.ui.login.WelcomePage;
         import com.google.android.material.bottomnavigation.BottomNavigationView;
         import com.google.android.material.navigation.NavigationView;
 
@@ -33,58 +40,14 @@ public class MainActivity extends AppCompatActivity
     ActivityMainBinding binding;
     NavHostFragment navHostFragment;
     private BottomNavigationView bottomNavigationView;
+    private AppDataBase appDatabase;
 
-    //region REGION OLDER WAY BottomNavigation
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            Fragment fragment;
-//            Fragment fragmentoGenerico = null;
-//            Intent intentGetStarted;
-//            switch (item.getItemId()) {
-//                case R.id.navigationMyProfile:
-////                    return true;
-//                    break;
-//                case R.id.navigationMyCourses:
-//                    //https://dribbble.com/shots/6482664-Design-Course-App-UI
-//                    fragmentoGenerico = new CoursesStaggedFragment();
-//                    break;
-//                case R.id.navigationHome:
-//                    fragmentoGenerico = new HomeCoursesFragment();
-//                    break;
-//                case R.id.navigationSearch:
-//
-//                    fragmentoGenerico = new MatchesCoursesFragment();
-//                    break;
-//                case R.id.navigationMenu:
-//                    binding.drawerLayout.openDrawer(GravityCompat.START);
-//                    break;
-//            }
-//            if (fragmentoGenerico != null) {
-//                loadFragment(fragmentoGenerico);
-//            }
-//
-//            setTitle(item.getTitle());
-//            return true;
-//        }
-//    };
 
-//    private void loadFragment(Fragment fragment) {
-//        // load fragment
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.setCustomAnimations(
-//                R.anim.fragment_fade_enter,  // enter
-//                R.anim.fragment_fade_exit,  // exit
-//                R.anim.fragment_fade_enter,   // popEnter
-//                R.anim.fragment_fade_exit  // popExit
-//        );
-//        transaction.replace(R.id.container_frame, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
-    //endregion
+    private TextView navHeaderUsername;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +78,46 @@ public class MainActivity extends AppCompatActivity
 
         setupNavigation();
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0); // Get the first header view
+        navHeaderUsername = headerView.findViewById(R.id.navHeaderUsername);
+
+        // Retrieve user ID from SharedPreferences
+        int userId = getUserID();
+        String firstName = getFirstName();
+        String lastName = getLastName();
+
+        if (userId != -1 && firstName != null && lastName != null) {
+            // User details are available
+            String welcomeMessage =  firstName + " " + lastName ;
+            navHeaderUsername.setText(welcomeMessage);
+            System.out.println(welcomeMessage);
+        } else {
+            Intent intent = new Intent(this, SigninPage.class);
+            startActivity(intent);
+            finish(); // Close this activity to prevent going back to it with the back button
+        }
+
+
     }
+    private int getUserID() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getInt("user_id", -1);
+    }
+    private String getFirstName() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getString("user_firstname", null);
+    }
+
+    private String getLastName() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getString("user_lastname", null);
+    }
+    private String getEmail() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getString("user_email", null);
+    }
+
 
     private void setAppTheme() {
         darkModePrefManager = new DarkModePrefManager(this);
@@ -156,7 +158,12 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-
+    private void clearUserSession() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -175,7 +182,19 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_dark_mode) {
+        }
+        else if (id == R.id.nav_logout) {
+            // Clear the user session and redirect to the login page
+            clearUserSession();
+            Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(this, WelcomePage.class); // Replace WelcomePage with the actual welcome page class
+            startActivity(intent);
+            finish(); // Close this activity to prevent going back to it with the back button
+        }
+
+
+        else if (id == R.id.nav_dark_mode) {
             //code for setting dark mode
             //true for dark mode, false for day mode, currently toggling on each click
 
@@ -195,8 +214,10 @@ public class MainActivity extends AppCompatActivity
         // Redirigez vers l'activité ProfileSettings si l'option "Tools" est sélectionnée.
         if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, ProfileSettings.class);
-            startActivity(intent);
-            return true; // Retournez true pour indiquer que l'item a été traité.
+            intent.putExtra("user_firstname", getFirstName());
+            intent.putExtra("user_lastname", getLastName());
+            intent.putExtra("user_email",getEmail());
+            startActivity(intent);// Retournez true pour indiquer que l'item a été traité.
         }
         if (id == R.id.nav_camera) {
             Intent intent = new Intent(this, Forum.class);
