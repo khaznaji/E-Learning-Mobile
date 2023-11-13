@@ -2,7 +2,7 @@
  * Copyright (c) 2023. rogergcc
  */
 
-package com.appsnipp.education.dao;
+package com.appsnipp.education.Dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -10,7 +10,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.appsnipp.education.complaint;
+import com.appsnipp.education.Entity.complaint;
 
 import java.util.List;
 

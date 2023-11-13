@@ -2,7 +2,7 @@
  * Copyright (c) 2023. rogergcc
  */
 
-package com.appsnipp.education;
+package com.appsnipp.education.Entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
