@@ -59,6 +59,12 @@
         <activity android:name=".ui.Events.UpdateEvent">
         <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
     </activity>
+        <activity android:name=".ui.login.ForgotPassword">
+            <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
+        </activity>
+        <activity android:name=".ui.login.ResetPasswordActivity">
+            <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
+        </activity>
         <activity android:name=".ui.Events.AddEvent">
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>

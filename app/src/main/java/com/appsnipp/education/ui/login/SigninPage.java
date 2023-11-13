@@ -28,6 +28,7 @@ import org.mindrot.jbcrypt.BCrypt;
 public class SigninPage extends AppCompatActivity {
     TextView back;
     Button loginButton; // Assurez-vous d'importer la classe Button
+    Button forgotPassword;
 
    /* @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,18 @@ public class SigninPage extends AppCompatActivity {
                finish();
            }
        });
+       TextView forgotPassword = findViewById(R.id.forgotPassword);
+
+       forgotPassword.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               // Rediriger vers l'activité de réinitialisation de mot de passe
+               Intent intent = new Intent(SigninPage.this, ForgotPassword.class);
+               startActivity(intent);
+           }
+       });
    }
+
 
     private void loginUser() {
         String email = editTextEmail.getText().toString().trim();
