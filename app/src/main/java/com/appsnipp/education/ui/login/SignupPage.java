@@ -63,6 +63,7 @@
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
             String confirmPassword = editTextConfirmPassword.getText().toString().trim();
+
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
             if (lastName.isEmpty() || firstName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
@@ -102,13 +103,15 @@
 
         private void insertUser(User user) {
             AsyncTask.execute(() -> {
+                user.image = String.valueOf(R.drawable.ic_user_icon);
+
                 appDatabase.userDAO().insert(user);
 
                 runOnUiThread(() -> {
                     Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
 
                     // Navigate to the login screen
-                    Intent intent = new Intent(this, SigninPage.class);
+                    Intent intent = new Intent(SignupPage.this, SigninPage.class);
                     startActivity(intent);
                     finish();  // Optional: finish the current activity if you don't want the user to navigate back to it
                 });

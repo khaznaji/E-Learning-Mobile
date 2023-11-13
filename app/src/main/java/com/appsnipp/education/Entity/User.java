@@ -9,6 +9,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(tableName = "users")
 public class User implements Serializable {
@@ -24,6 +25,10 @@ public class User implements Serializable {
 
     @ColumnInfo(name = "password")
     public String password;
+
+    @ColumnInfo(name = "image")
+    public String image;
+
 
     public int getId() {
         return id;
@@ -44,6 +49,8 @@ public class User implements Serializable {
     public String getPassword() {
         return password;
     }
+
+
 
     // Setters
 

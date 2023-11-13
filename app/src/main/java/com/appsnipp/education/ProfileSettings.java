@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -24,6 +25,7 @@ import com.appsnipp.education.Dao.UserDao;
 import com.appsnipp.education.DataBase.AppDataBase;
 import com.appsnipp.education.Entity.User;
 import com.appsnipp.education.ui.login.WelcomePage;
+import com.bumptech.glide.Glide;
 
 public class ProfileSettings  extends AppCompatActivity {
 
@@ -38,17 +40,20 @@ public class ProfileSettings  extends AppCompatActivity {
         emailEditText = findViewById(R.id.emailEditText);
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
+
         Button editButton = findViewById(R.id.btn_submit);
         int userId = getUserID();
         String firstName = getFirstName();
         String lastName = getLastName();
         String email = getEmail();
+
         appDatabase = AppDataBase.getInstance(this);
 
         // Afficher les données de l'utilisateur dans les champs
         emailEditText.setText(email);
         firstNameEditText.setText(firstName);
         lastNameEditText.setText(lastName);
+
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,6 +165,7 @@ public class ProfileSettings  extends AppCompatActivity {
         return preferences.getInt("user_id", -1);
     }
 
+
     private String getFirstName() {
         SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return preferences.getString("user_firstname", null);
@@ -174,5 +180,7 @@ public class ProfileSettings  extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return preferences.getString("user_email", null);
     }
+
+
 
 }
