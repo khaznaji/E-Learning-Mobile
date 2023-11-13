@@ -58,7 +58,9 @@ public class AddCourses extends AppCompatActivity {
                                              String level=levelEd.getText().toString();
                                              String duration=durationEd.getText().toString();
                                              String category=categoryEd.getText().toString();
+
                                              Courses courses = new Courses(0,description,title,level,duration,category);
+
                                              //coursesAdapter.addCourses(courses);
                                              coursesDao.AddCourses(courses);
                                              descriptionEd.setText("");
@@ -66,6 +68,7 @@ public class AddCourses extends AppCompatActivity {
                                              levelEd.setText("");
                                              durationEd.setText("");
                                              categoryEd.setText("");
+
                                              Toast.makeText(AddCourses.this,"Inserted",Toast.LENGTH_SHORT).show();
 
 

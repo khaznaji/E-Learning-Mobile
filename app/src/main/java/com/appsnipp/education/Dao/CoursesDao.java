@@ -5,6 +5,7 @@
 package com.appsnipp.education.Dao;
 
 
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -23,7 +24,8 @@ public interface CoursesDao {
 
     @Update
     void UpdateCourses (Courses courses);
-
+    @Delete
+    void deleteTodo(Courses courses);
     @Query(" delete  from Courses where id=:id ")
     void delete (int id );
 

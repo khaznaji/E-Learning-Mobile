@@ -34,14 +34,19 @@ public class AddArticle extends AppCompatActivity {
         pwd=findViewById(R.id.ComplaintDescriptionInput);
 
         saveButton.setOnClickListener(v -> {
+            String title =userName.getText().toString();
+            String description =pwd.getText().toString();
             complaint user = new complaint(userName.getText().toString(),pwd.getText().toString());
+            if (title.isEmpty() || description.isEmpty() ) {
+                Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                return;}else{
             database.userDAO().insertTodo(user);
             Toast.makeText(AddArticle.this,"Inserted",Toast.LENGTH_SHORT).show();
 
             List<complaint> lu = database.userDAO().getAllTodos();
             for(complaint userList :lu ){
                 System.out.println(userList);
-            }
+            }}
 
         });
     }

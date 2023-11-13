@@ -44,7 +44,11 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.User
         holder.textViewUserName.setText("First Name: " + user.getDescription());
         holder.textelastname.setText("Last Name: " + user.getTitle());
 
-        // Ajoutez d'autres mises à jour pour afficher d'autres détails de l'utilisateur
+        holder.btnDelete.setOnClickListener(v -> {
+            if (v.getContext() instanceof ListComplaints) {
+                ((ListComplaints) v.getContext()).deleteComplaint(user);
+            }
+        });
 
     }
 
@@ -57,14 +61,16 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.User
         TextView textViewUserName;
         TextView textelastname;
         TextView textemail;
-
+        Button btnDelete;
         // Ajoutez d'autres TextView pour d'autres détails de l'utilisateur
 
         UserViewHolder(@NonNull View itemView) {
             super(itemView);
+
             textViewUserName = itemView.findViewById(R.id.texteDescription);
             textelastname = itemView.findViewById(R.id.textViewTitle);
-
+            btnDelete = itemView.findViewById(R.id.btnDelete);
             // Initialisez d'autres TextView ici
         }
+
     }}

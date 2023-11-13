@@ -2,7 +2,7 @@
  * Copyright (c) 2023. rogergcc
  */
 
-package com.appsnipp.education.ui.Events;
+package com.appsnipp.education.ui.Courses;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,40 +13,42 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.appsnipp.education.Entity.Courses;
 import com.appsnipp.education.Entity.Event;
 import com.appsnipp.education.R;
-import com.appsnipp.education.ui.Courses.ListCourses;
+import com.appsnipp.education.ui.Complaints.ListComplaints;
+import com.appsnipp.education.ui.Events.EventAdapter;
 
 import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.UserViewHolder> {
+public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.UserViewHolder> {
 
-    private List<Event> userList;
+    private List<Courses> userList;
 
-    public EventAdapter(List<Event> userList) {
+    public CourseAdapter(List<Courses> userList) {
         this.userList = userList;
     }
-    public void setUserList(List<Event> userList) {
+    public void setUserList(List<Courses> userList) {
         this.userList = userList;
     }
 
     @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_event, parent, false);
-        return new UserViewHolder(view);
+    public CourseAdapter.UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent, false);
+        return new CourseAdapter.UserViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        Event user = userList.get(position);
+    public void onBindViewHolder(@NonNull CourseAdapter.UserViewHolder holder, int position) {
+        Courses user = userList.get(position);
 
         // Mettez à jour les TextView avec les données de l'utilisateur
         holder.textViewTitle.setText("First Name: " + user.getDescription());
-        holder.texteDescription.setText("Last Name: " + user.getName());
+        holder.texteDescription.setText("Last Name: " + user.getCategory());
         holder.btnDelete.setOnClickListener(v -> {
-            if (v.getContext() instanceof ListEventsFront) {
-                ((ListEventsFront) v.getContext()).deleteComplaint(user);
+            if (v.getContext() instanceof ListCourses) {
+                ((ListCourses) v.getContext()).deleteComplaint(user);
             }
         });
         // Ajoutez d'autres mises à jour pour afficher d'autres détails de l'utilisateur
@@ -70,6 +72,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.UserViewHold
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             texteDescription = itemView.findViewById(R.id.texteDescription);
             btnDelete = itemView.findViewById(R.id.btnDelete);
+
             // Initialisez d'autres TextView ici
         }
     }}

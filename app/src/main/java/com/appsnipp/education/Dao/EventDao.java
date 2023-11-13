@@ -6,7 +6,9 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.appsnipp.education.Entity.Courses;
 import com.appsnipp.education.Entity.Event;
+import com.appsnipp.education.Entity.complaint;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public interface EventDao {
     void insertTodo(Event event);
 
     @Query("SELECT * FROM events_table")
-    List<Event> getAllTodos();
+    List<Event> getAll();
 
     @Query("SELECT * FROM events_table WHERE idEvent LIKE :uid")
     Event findTodoById(int uid);

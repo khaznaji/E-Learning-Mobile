@@ -58,4 +58,18 @@ public class ListComplaints extends AppCompatActivity {
             });
         });
     }
-}
+    // Add this method to handle deleting a complaint
+    public void deleteComplaint(complaint complaint) {
+        AsyncTask.execute(() -> {
+            // Delete the complaint from the database
+            appDatabase.userDAO().deleteTodo(complaint);
+
+            // Reload the list of users after deletion
+            loadUserList();
+
+            runOnUiThread(() -> {
+                // Show a toast message or perform any UI update after deletion
+                Toast.makeText(ListComplaints.this, "Complaint deleted", Toast.LENGTH_SHORT).show();
+            });
+        });
+}}
