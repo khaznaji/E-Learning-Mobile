@@ -7,6 +7,7 @@ package com.appsnipp.education.ui.login;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,12 +21,18 @@ import java.util.List;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
     private List<User> userList;
+    private OnItemClickListener onItemClickListener;
 
-    public UserAdapter(List<User> userList) {
+    public UserAdapter(List<User> userList, OnItemClickListener onItemClickListener) {
         this.userList = userList;
+        this.onItemClickListener = onItemClickListener;
+    }
+    public List<User> getUserList() {
+        return userList;
     }
     public void setUserList(List<User> userList) {
         this.userList = userList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -44,8 +51,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.textelastname.setText("Last Name: " + user.getLastname());
         holder.textemail.setText("Email: " + user.getEmail());
 
-        // Ajoutez d'autres mises à jour pour afficher d'autres détails de l'utilisateur
-
+        // Set click listener for the Delete button
+        holder.btnDelete.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(position, v);
+            }
+        });
     }
 
     @Override
@@ -57,15 +68,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         TextView textViewUserName;
         TextView textelastname;
         TextView textemail;
-
-        // Ajoutez d'autres TextView pour d'autres détails de l'utilisateur
+        Button btnDelete;
 
         UserViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewUserName = itemView.findViewById(R.id.textViewUserName);
             textelastname = itemView.findViewById(R.id.textelastname);
             textemail = itemView.findViewById(R.id.textemail);
-
-            // Initialisez d'autres TextView ici
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
-    }}
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position, View view);
+    }
+}

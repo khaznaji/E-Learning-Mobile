@@ -33,4 +33,7 @@ public interface UserDao {
     User getUserById(int userId);
     @Query("SELECT * FROM users")
     List<User> getAllUsers();
+    @Query("UPDATE users SET email = :newEmail, firstName = :newFirstName, lastName = :newLastName WHERE id = :userId")
+    int updateUser(int userId, String newEmail, String newFirstName, String newLastName);
+
 }

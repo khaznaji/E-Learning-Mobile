@@ -120,7 +120,8 @@ public class SigninPage extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("user_id", user.id);
         editor.putString("user_firstname", user.firstname);
-        editor.putString("user_lastname", user.lastname);// ou utilisez le nom d'utilisateur, selon votre cas
+        editor.putString("user_lastname", user.lastname);
+        editor.putString("user_email", user.email);// ou utilisez le nom d'utilisateur, selon votre cas
         editor.apply();
     }
 

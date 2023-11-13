@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity
             navHeaderUsername.setText(welcomeMessage);
             System.out.println(welcomeMessage);
         } else {
-            // User details not found, redirect to login
             Intent intent = new Intent(this, SigninPage.class);
             startActivity(intent);
             finish(); // Close this activity to prevent going back to it with the back button
@@ -114,7 +113,10 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return preferences.getString("user_lastname", null);
     }
-
+    private String getEmail() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getString("user_email", null);
+    }
 
 
     private void setAppTheme() {
@@ -212,8 +214,10 @@ public class MainActivity extends AppCompatActivity
         // Redirigez vers l'activité ProfileSettings si l'option "Tools" est sélectionnée.
         if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, ProfileSettings.class);
-            startActivity(intent);
-            return true; // Retournez true pour indiquer que l'item a été traité.
+            intent.putExtra("user_firstname", getFirstName());
+            intent.putExtra("user_lastname", getLastName());
+            intent.putExtra("user_email",getEmail());
+            startActivity(intent);// Retournez true pour indiquer que l'item a été traité.
         }
         if (id == R.id.nav_camera) {
             Intent intent = new Intent(this, Forum.class);
