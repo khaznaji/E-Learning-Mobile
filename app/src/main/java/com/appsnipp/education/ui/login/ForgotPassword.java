@@ -40,7 +40,7 @@ public class ForgotPassword extends AppCompatActivity {
                     // Vérifier si l'e-mail existe dans la base de données
                     if (isEmailInDatabase(email)) {
                         // Si l'e-mail existe, passer à l'activité de réinitialisation du mot de passe
-                        Intent intent = new Intent(ForgotPassword.this, ResetPasswordActivity.class);
+                        Intent intent = new Intent(ForgotPassword.this, AnswerActivity.class);
                         intent.putExtra("EMAIL", email);
                         startActivity(intent);
                     } else {

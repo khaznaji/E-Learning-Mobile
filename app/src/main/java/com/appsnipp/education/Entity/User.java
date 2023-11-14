@@ -28,7 +28,11 @@ public class User implements Serializable {
 
     @ColumnInfo(name = "image")
     public String image;
+    @ColumnInfo(name = "answer1")
+    public String answer1;
 
+    @ColumnInfo(name = "answer2")
+    public String answer2;
 
     public int getId() {
         return id;
@@ -73,7 +77,21 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getAnswer1() {
+        return answer1;
+    }
 
+    public String getAnswer2() {
+        return answer2;
+    }
+
+    public void setAnswer1(String answer1) {
+        this.answer1 = answer1;
+    }
+
+    public void setAnswer2(String answer2) {
+        this.answer2 = answer2;
+    }
 }
 
 

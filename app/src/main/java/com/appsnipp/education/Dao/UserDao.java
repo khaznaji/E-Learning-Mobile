@@ -35,5 +35,7 @@ public interface UserDao {
     List<User> getAllUsers();
     @Query("UPDATE users SET email = :newEmail, firstName = :newFirstName, lastName = :newLastName WHERE id = :userId")
     int updateUser(int userId, String newEmail, String newFirstName, String newLastName);
+    @Query("SELECT * FROM users WHERE email = :email AND answer1 = :answer1 AND answer2 = :answer2")
+    User getUserByAnswers(String email, String answer1, String answer2);
 
 }
