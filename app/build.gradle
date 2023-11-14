@@ -22,10 +22,10 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\DELL\\.android\\nom-du-keystore.keystore')
-            storePassword 'android'
-            keyAlias 'alias-du-keystore'
-            keyPassword 'android'
+            storeFile file('C://Users//user//.android//nom_du_keystore.keystore')
+            storePassword 'azerty123'
+            keyAlias 'key_alias'
+            keyPassword 'azerty123'
         }
         release {
             // Define your release signing configuration here

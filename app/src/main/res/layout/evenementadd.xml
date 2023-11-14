@@ -85,6 +85,7 @@
                 android:orientation="horizontal"
                 android:padding="16dp"
                 tools:context=".DateFormActivity">
+
                 <EditText
                     android:id="@+id/editTextDay"
                     android:layout_width="0dp"
@@ -97,8 +98,7 @@
                     android:inputType="number"
                     android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
-
+                    android:textStyle="bold" />
 
 
                 <EditText
@@ -111,6 +111,7 @@
                     android:inputType="number"
                     android:textColor="#000000"
                     android:textSize="18sp" />
+
                 <EditText
                     android:id="@+id/editTextYear"
                     android:layout_width="0dp"
@@ -122,26 +123,27 @@
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
-<!--                <ImageView-->
-<!--                    android:id="@+id/imageView"-->
-<!--                    android:layout_width="48dp"-->
-<!--                    android:layout_height="48dp"-->
-<!--                    android:src="@drawable/placeholder_image" />-->
+                <!--                <ImageView-->
+                <!--                    android:id="@+id/imageView"-->
+                <!--                    android:layout_width="48dp"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:src="@drawable/placeholder_image" />-->
 
 
             </LinearLayout>
+
             <Spinner
+                android:id="@+id/imageSpinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageSpinner" />
-<!--            <resources>-->
-<!--                <string-array name="image_array">-->
-<!--                    <item>@drawable/image1</item>-->
-<!--                    <item>@drawable/image2</item>-->
-<!--                    <item>@drawable/image3</item>-->
-<!--                    &lt;!&ndash; Ajoutez d'autres images si nécessaire &ndash;&gt;-->
-<!--                </string-array>-->
-<!--            </resources>-->
+                android:layout_height="wrap_content" />
+            <!--            <resources>-->
+            <!--                <string-array name="image_array">-->
+            <!--                    <item>@drawable/image1</item>-->
+            <!--                    <item>@drawable/image2</item>-->
+            <!--                    <item>@drawable/image3</item>-->
+            <!--                    &lt;!&ndash; Ajoutez d'autres images si nécessaire &ndash;&gt;-->
+            <!--                </string-array>-->
+            <!--            </resources>-->
 
 
             <Button
@@ -152,13 +154,13 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
-                android:text="Sélectionner une image"
                 android:onClick="onImageSelectionClick"
+                android:text="Sélectionner une image"
                 android:textAllCaps="false"
                 android:textColor="#ffffff"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
+
             <Button
                 android:layout_width="210dp"
                 android:layout_height="wrap_content"
