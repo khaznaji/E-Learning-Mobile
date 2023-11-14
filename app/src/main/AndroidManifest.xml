@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.appsnipp.education">
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -59,12 +58,20 @@
         <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
     </activity>
         <activity android:name=".ui.Events.AddEvent">
+
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Courses.ListCourses">
 
+
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>  <activity android:name=".ui.Courses.AddCourses">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
         <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
     </activity>  <activity android:name=".ui.Courses.UpdateCourses">
         <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
@@ -98,11 +105,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

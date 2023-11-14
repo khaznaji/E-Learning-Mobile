@@ -6,6 +6,7 @@ package com.appsnipp.education.ui.model;
 
 public class CourseCard {
 
+
     private int Id;
     private int imageCourse;
     private String courseTitle;

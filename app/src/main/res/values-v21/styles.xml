@@ -4,4 +4,8 @@
         <item name="windowNoTitle">true</item>
 <!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
     </style>
+    <style name="GreenToast">
+        <item name="android:background">#00FF00</item> <!-- Couleur de fond verte -->
+        <item name="android:textColor">#FFFFFF</item>  <!-- Couleur du texte en blanc -->
+    </style>
 </resources>
