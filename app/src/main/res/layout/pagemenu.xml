@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2023. rogergcc
-  -->
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/splash_drawable"
     tools:context=".ui.login.SignupPage">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-    </FrameLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,50 +19,24 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewUser"
+            <Button
+                android:id="@+id/user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginBottom="25dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="10mm"
-                        android:src="@drawable/ic_user"
-                        android:scaleType="centerCrop"
-                    />
-
-                    <Button
-                        android:id="@+id/user"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/buttonshape"
-                        android:fontFamily="@font/gotham"
-                        android:text="List Of Users"
-                        android:textAllCaps="false"
-                        android:textColor="#ffffff"
-                        android:textSize="25sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+                android:background="@drawable/buttonshape"
+                android:fontFamily="@font/gotham"
+                android:text="List Of Users"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/event"
-
-                android:layout_width="200dp"
+                android:layout_width="423dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
@@ -81,13 +45,12 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/courses"
-
-                android:layout_width="200dp"
+                android:layout_width="383dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
@@ -96,13 +59,12 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
             <Button
                 android:id="@+id/complaints"
-
-                android:layout_width="200dp"
+                android:layout_width="389dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/buttonshape"
                 android:fontFamily="@font/gotham"
@@ -111,10 +73,7 @@
                 android:textColor="#ffffff"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-            </LinearLayout>
 
-
+        </LinearLayout>
     </ScrollView>
-
-
 </RelativeLayout>
