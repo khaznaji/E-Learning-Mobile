@@ -6,15 +6,13 @@ package com.appsnipp.education.ui.Complaints;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appsnipp.education.Database.AppDataBase;
+import com.appsnipp.education.DataBase.AppDataBase;
 import com.appsnipp.education.Entity.complaint;
 import com.appsnipp.education.R;
 

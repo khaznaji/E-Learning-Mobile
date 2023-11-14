@@ -4,25 +4,17 @@
 
 package com.appsnipp.education.ui.Courses;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appsnipp.education.Database.AppDataBase;
+import com.appsnipp.education.DataBase.AppDataBase;
 import com.appsnipp.education.Entity.Courses;
-import com.appsnipp.education.Entity.Event;
-import com.appsnipp.education.Entity.complaint;
 import com.appsnipp.education.R;
-import com.appsnipp.education.ui.Complaints.ListComplaints;
-import com.appsnipp.education.ui.Events.EventAdapter;
-import com.appsnipp.education.ui.Events.ListEventsFront;
 
 import java.util.ArrayList;
 import java.util.List;

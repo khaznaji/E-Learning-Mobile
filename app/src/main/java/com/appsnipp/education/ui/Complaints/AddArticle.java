@@ -13,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.appsnipp.education.R;
 import com.appsnipp.education.Entity.complaint;
-import com.appsnipp.education.Database.AppDataBase;
-import com.appsnipp.education.ui.Courses.AddCourses;
+import com.appsnipp.education.DataBase.AppDataBase;
 
 
 import java.util.List;

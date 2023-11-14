@@ -8,16 +8,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsnipp.education.R;
 import com.appsnipp.education.Entity.Courses;
 import com.appsnipp.education.Dao.CoursesDao;
-import com.appsnipp.education.Database.AppDataBase;
+import com.appsnipp.education.DataBase.AppDataBase;
 //import com.appsnipp.education.ui.adapter.CoursesAdapter;
 
-import java.util.List;
 
 public class AddCourses extends AppCompatActivity {
 

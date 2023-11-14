@@ -12,11 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appsnipp.education.Database.AppDataBase;
-import com.appsnipp.education.Entity.Courses;
+import com.appsnipp.education.DataBase.AppDataBase;
 import com.appsnipp.education.Entity.Event;
 import com.appsnipp.education.R;
-import com.appsnipp.education.ui.Courses.ListCourses;
 
 import java.util.ArrayList;
 import java.util.List;
