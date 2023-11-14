@@ -112,7 +112,7 @@
 
         private void insertUser(User user) {
             AsyncTask.execute(() -> {
-                user.image = String.valueOf(R.drawable.ic_user_icon);
+                user.image = String.valueOf(R.drawable.android_developer);
 
                 appDatabase.userDAO().insert(user);
 
