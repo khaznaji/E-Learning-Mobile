@@ -29,7 +29,8 @@ package com.appsnipp.education;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    DarkModePrefManager darkModePrefManager;
+
+        DarkModePrefManager darkModePrefManager;
     ActivityMainBinding binding;
     NavHostFragment navHostFragment;
     private BottomNavigationView bottomNavigationView;

@@ -63,10 +63,6 @@
         android:layout_marginTop="16dp"
         android:textAllCaps="false" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/course_design_thinking" />
+
 
 </LinearLayout>

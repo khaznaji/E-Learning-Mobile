@@ -53,12 +53,19 @@
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Events.ListEvent">
+
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Events.UpdateEvent">
         <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
     </activity>
         <activity android:name=".ui.Events.AddEvent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Courses.ListCourses">
@@ -76,6 +83,7 @@
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Events.ListEventsFront">
+
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
         <activity android:name=".ui.Menu.AdminMenu">
@@ -98,11 +106,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 
