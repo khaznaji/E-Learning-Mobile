@@ -19,16 +19,16 @@ import com.appsnipp.education.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListComplaints extends AppCompatActivity {
+public class ListComplaintsFront extends AppCompatActivity {
 
     private AppDataBase appDatabase;
     private RecyclerView recyclerViewUsers;
-    private ComplaintAdapter userAdapter;
+    private ComplaintAdapterFront userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_article_list);
+        setContentView(R.layout.activity_article_list_front);
 
         appDatabase = AppDataBase.getInstance(this);
 
@@ -36,7 +36,7 @@ public class ListComplaints extends AppCompatActivity {
         recyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the adapter with an empty list (you can load the data later)
-        userAdapter = new ComplaintAdapter(new ArrayList<>());
+        userAdapter = new ComplaintAdapterFront(new ArrayList<>());
         recyclerViewUsers.setAdapter(userAdapter);
 
         // Load the list of users in the background
@@ -57,17 +57,4 @@ public class ListComplaints extends AppCompatActivity {
         });
     }
     // Add this method to handle deleting a complaint
-    public void deleteComplaint(complaint complaint) {
-        AsyncTask.execute(() -> {
-            // Delete the complaint from the database
-            appDatabase.userDAOK().deleteTodo(complaint);
-
-            // Reload the list of users after deletion
-            loadUserList();
-
-            runOnUiThread(() -> {
-                // Show a toast message or perform any UI update after deletion
-                Toast.makeText(ListComplaints.this, "Complaint deleted", Toast.LENGTH_SHORT).show();
-            });
-        });
-}}
+ }

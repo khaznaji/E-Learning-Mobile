@@ -4,6 +4,7 @@
 
 package com.appsnipp.education.ui.Complaints;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,10 +40,12 @@ public class AddArticle extends AppCompatActivity {
             if (title.isEmpty() || description.isEmpty() ) {
                 Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
                 return;}else{
-            database.userDAO().insertTodo(user);
+            database.userDAOK().insertTodo(user);
+                startActivity(new Intent(AddArticle.this, ListComplaints.class));
+                finish();
             Toast.makeText(AddArticle.this,"Inserted",Toast.LENGTH_SHORT).show();
 
-            List<complaint> lu = database.userDAO().getAllTodos();
+            List<complaint> lu = database.userDAOK().getAllTodos();
             for(complaint userList :lu ){
                 System.out.println(userList);
             }}

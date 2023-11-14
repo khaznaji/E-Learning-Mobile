@@ -2,7 +2,7 @@
  * Copyright (c) 2023. rogergcc
  */
 
-package com.appsnipp.education.ui.Complaints;
+package com.appsnipp.education.ui.Events;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,22 +13,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsnipp.education.DataBase.AppDataBase;
-import com.appsnipp.education.Entity.complaint;
+import com.appsnipp.education.Entity.Event;
 import com.appsnipp.education.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListComplaints extends AppCompatActivity {
-
+public class ListEvent  extends AppCompatActivity {
     private AppDataBase appDatabase;
     private RecyclerView recyclerViewUsers;
-    private ComplaintAdapter userAdapter;
+    private EventAdapterFront userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_article_list);
+        setContentView(R.layout.activity_event_list);
 
         appDatabase = AppDataBase.getInstance(this);
 
@@ -36,7 +35,7 @@ public class ListComplaints extends AppCompatActivity {
         recyclerViewUsers.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize the adapter with an empty list (you can load the data later)
-        userAdapter = new ComplaintAdapter(new ArrayList<>());
+        userAdapter = new EventAdapterFront(new ArrayList<>());
         recyclerViewUsers.setAdapter(userAdapter);
 
         // Load the list of users in the background
@@ -46,28 +45,24 @@ public class ListComplaints extends AppCompatActivity {
     private void loadUserList() {
         AsyncTask.execute(() -> {
             // Load the list of users from the database
-            List<complaint> userList = appDatabase.userDAOK().getAllTodos();
+            List<Event> userList = appDatabase.userDAOo().getAll();
 
             runOnUiThread(() -> {
-                // Update the adapter with the new list of users
-                userAdapter.setUserList(userList);
-                // Call notifyDataSetChanged on the adapter
-                userAdapter.notifyDataSetChanged();
+                // Check if the list is empty
+                if (userList.isEmpty()) {
+                    // Display a message indicating that the table is empty
+                    // You can customize this based on your UI requirements
+                    // For simplicity, you can use a Toast or set a TextView's text
+                    // In this example, I'm using a Toast
+                    Toast.makeText(ListEvent.this, "Table is empty", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Update the adapter with the new list of users
+                    userAdapter.setUserList(userList);
+                    // Call notifyDataSetChanged on the adapter
+                    userAdapter.notifyDataSetChanged();
+                }
             });
         });
     }
-    // Add this method to handle deleting a complaint
-    public void deleteComplaint(complaint complaint) {
-        AsyncTask.execute(() -> {
-            // Delete the complaint from the database
-            appDatabase.userDAOK().deleteTodo(complaint);
 
-            // Reload the list of users after deletion
-            loadUserList();
-
-            runOnUiThread(() -> {
-                // Show a toast message or perform any UI update after deletion
-                Toast.makeText(ListComplaints.this, "Complaint deleted", Toast.LENGTH_SHORT).show();
-            });
-        });
-}}
+}
