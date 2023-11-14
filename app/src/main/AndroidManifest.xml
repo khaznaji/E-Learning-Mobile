@@ -71,6 +71,9 @@
         <activity android:name=".ui.login.UserActivity">
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
         </activity>
+        <activity android:name=".ui.login.AnswerActivity">
+            <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->
+        </activity>
         <activity android:name=".ui.Courses.ListCourses">
 
             <!-- Vous pouvez ajouter des attributs supplémentaires ici si nécessaire -->

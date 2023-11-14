@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "187403579220",
+    "project_id": "adroit-booth-380600",
+    "storage_bucket": "adroit-booth-380600.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187403579220:android:d850235654739e4e8aa2c1",
+        "android_client_info": {
+          "package_name": "com.appsnipp.education"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJs5qjHhDHzDuMY3Mq7gteqz5COWTp3Q4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -25,7 +25,7 @@
     public class SignupPage extends AppCompatActivity {
 
         private AppDataBase appDatabase;
-        private EditText editTextLastName, editTextFirstName, editTextEmail, editTextPassword, editTextConfirmPassword;
+        private EditText editTextLastName, editTextFirstName, editTextEmail, editTextPassword, editTextConfirmPassword ,answer1 ,answser2;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,8 @@
             editTextEmail = findViewById(R.id.editTextEmail);
             editTextPassword = findViewById(R.id.editTextPassword);
             editTextConfirmPassword = findViewById(R.id.editTextConfirmPassword);
+            answer1 = findViewById(R.id.answer1);
+            answser2 = findViewById(R.id.answer2);
 
             Button btnSignUp = findViewById(R.id.btnSignUp);
             btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -63,14 +65,19 @@
             String email = editTextEmail.getText().toString().trim();
             String password = editTextPassword.getText().toString().trim();
             String confirmPassword = editTextConfirmPassword.getText().toString().trim();
+            String answer1a = answer1.getText().toString().trim();
+            String answser2a = answser2.getText().toString().trim();
 
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
-            if (lastName.isEmpty() || firstName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            if (lastName.isEmpty() || firstName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || answer1a.isEmpty()|| answser2a.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 return;
             }
-
+            if ( answer1a.isEmpty()|| answser2a.isEmpty()) {
+                Toast.makeText(this, "Please set up security questions to secure your account", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if (!password.equals(confirmPassword)) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                 return;
@@ -91,6 +98,8 @@
                         newUser.firstname = firstName;
                         newUser.email = email;
                         newUser.password = hashedPassword;
+                        newUser.answer1 = answer1a;
+                        newUser.answer2 = answser2a;
 
                         // Insérer l'utilisateur dans la base de données
                         insertUser(newUser);
@@ -103,7 +112,7 @@
 
         private void insertUser(User user) {
             AsyncTask.execute(() -> {
-                user.image = String.valueOf(R.drawable.ic_user_icon);
+                user.image = String.valueOf(R.drawable.android_developer);
 
                 appDatabase.userDAO().insert(user);
 

@@ -160,6 +160,7 @@ public class ProfileSettings  extends AppCompatActivity {
 
 
 
+
     private int getUserID() {
         SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return preferences.getInt("user_id", -1);
@@ -169,6 +170,10 @@ public class ProfileSettings  extends AppCompatActivity {
     private String getFirstName() {
         SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
         return preferences.getString("user_firstname", null);
+    }
+    private String getImage() {
+        SharedPreferences preferences = getSharedPreferences("user_session", Context.MODE_PRIVATE);
+        return preferences.getString("user_image", null);
     }
 
     private String getLastName() {
